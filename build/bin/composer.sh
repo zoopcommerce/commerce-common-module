@@ -12,6 +12,6 @@ else
     then
         /opt/composer/composer.phar install --no-dev --optimize-autoloader
     else
-        /opt/composer/composer.phar update --optimize-autoloader
+        /opt/composer/composer.phar update --optimize-autoloader -vvv
     fi
 fi

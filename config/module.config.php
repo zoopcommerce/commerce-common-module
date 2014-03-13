@@ -1,15 +1,170 @@
 <?php
 
-return array(
+return [
+    'doctrine' => [
+        'eventmanager' => [
+            'sage' => [],
+            'commerce' => [],
+        ],
+        'odm' => [
+            'connection' => [
+                'commerce' => [
+                    'dbname' => 'zoop',
+                    'server' => '%%%COMMERCE_MONGODB_HOST%%%',
+                    'port' => '27017',
+                    'user' => '%%%COMMERCE_MONGODB_USERNAME%%%',
+                    'password' => '%%%COMMERCE_MONGODB_PASSWORD%%%',
+                ],
+            ],
+            'configuration' => [
+                'commerce' => [
+                    'class_metadata_factory_name' => 'Zoop\Shard\ODMCore\ClassMetadataFactory',
+                    'metadata_cache' => 'doctrine.cache.juggernaut.filesystem',
+                    'generate_proxies' => false,
+                    'proxy_dir' => __DIR__ . '/../../data/proxies',
+                    'proxy_namespace' => 'proxies',
+                    'generate_hydrators' => false,
+                    'hydrator_dir' => __DIR__ . '/../../data/hydrators',
+                    'hydrator_namespace' => 'hydrators',
+                    'default_db' => 'zoop',
+                    'driver' => 'doctrine.driver.default',
+                ]
+            ],
+            'documentmanager' => [
+                'commerce' => [
+                    'connection' => 'doctrine.odm.connection.commerce',
+                    'configuration' => 'doctrine.odm.configuration.commerce',
+                    'eventmanager' => 'doctrine.eventmanager.commerce'
+                ]
+            ],
+        ],
+        //need to fix up ORM
+        'orm' => [
+            'generate_proxies' => false,
+            'proxy_dir' => __DIR__ . '/../../data/proxies',
+            'proxy_namespace' => 'proxies',
+            'generate_hydrators' => false,
+            'hydrator_dir' => __DIR__ . '/../../data/hydrators',
+            'hydrator_namespace' => 'hydrators',
+            'paths' => [
+                'Zoop\Legacy\Entity' => __DIR__ . '/../module/src/Zoop/Legacy/Entity',
+            ],
+        ],
+    ],
     'zoop' => [
+        'aws' => [
+            'key' => '%%%AWS_KEY%%%',
+            'secret' => '%%%AWS_SECRET_KEY%%%',
+            's3' => [
+                'buckets' => [
+                    'web' => 'zoop-web-assets',
+                    'ops' => 'zoop-ops-sydney'
+                ],
+                'endpoint' => [
+                    'web' => 'https://zoop-web-assets.s3.amazonaws.com',
+                    'ops' => 'https://zoop-ops-sydney.s3.amazonaws.com',
+                ],
+            ],
+            'cloudfront' => [
+                'endpoint' => [
+                    'web' => 'https://dvmsykbq2wgf8.cloudfront.net',
+                    'ops' => '',
+                ],
+            ]
+        ],
+        'db' => [
+            'host' => '%%%RDS_HOST%%%',
+            'database' => 'zoop_commerce',
+            'username' => '%%%RDS_USERNAME%%%',
+            'password' => '%%%RDS_PASSWORD%%%',
+            'port' => 3306,
+        ],
+        'cache' => [
+            'directory' => __DIR__ . '/../../data/cache/',
+            'handler' => 'mongodb',
+            'mongodb' => [
+                'host' => '%%%CACHE_MONGODB_HOST%%%',
+                'database' => 'zoop',
+                'collection' => 'Cache',
+                'username' => '%%%CACHE_MONGODB_USERNAME%%%',
+                'password' => '%%%CACHE_MONGODB_PASSWORD%%%',
+                'port' => 27017,
+            ],
+            'sql' => 300, //ttl in seconds
+            'ttl' => 300, //ttl in seconds
+            'page' => 300, //ttl in seconds
+        ],
+        'file_upload' => [
+            'temp_dir' => __DIR__ . '/../../data/temp',
+            's3_temp_dir' => 'temp',
+        ],
+        'email' => [
+            'dev' => [
+                'name' => 'Josh',
+                'address' => 'josh.stuart@zoopcommerce.com'
+            ],
+            'support' => [
+                'name' => 'Zoop Support',
+                'address' => 'support@zoopcommerce.com'
+            ],
+            'sales' => [
+                'address' => 'sales@zoopcommerce.com',
+                'name' => 'Zoop'
+            ],
+            'info' => [
+                'name' => 'Zoop',
+                'address' => 'info@zoopcommerce.com'
+            ],
+            'no_reply' => [
+                'name' => 'Zoop',
+                'address' => 'no-reply@zoopcommerce.com'
+            ]
+        ],
+        'juggernaut' => [
+            'file_system' => [
+                'directory' => 'data/cache/doctrine'
+            ]
+        ],
         'shard' => [
             'manifest' => [
                 'commerce' => [
-                    'documents' => [
-                        'Zoop\Common\DataModel' => __DIR__ . '/../src/Zoop/Common/DataModel'
+                    'model_manager' => 'doctrine.odm.documentmanager.commerce',
+                    'extension_configs' => [
+                        'extension.odmcore' => true,
+                        'extension.softDelete' => true,
+                        'extension.accesscontrol' => true,
+                        'extension.crypt' => true,
+                        'extension.serializer' => true,
+                        'extension.validator' => true,
+                        'extension.stamp' => true,
+                    ],
+                    'models' => [
+                        'Zoop\Common\DataModel' => __DIR__ . '/../src/Zoop/Common/DataModel',
+                        'Zoop\Common\File\DataModel' => __DIR__ . '/../src/Zoop/Common/File/DataModel'
+                    ],
+                    'service_manager_config' => [
+                        'factories' => [
+                            'modelmanager' => 'Zoop\Common\Database\Service\CommerceDocumentManagerFactory',
+                            'eventmanager' => 'Zoop\ShardModule\Service\EventManagerFactory'
+                        ]
                     ]
-                ]
+                ],
+            ],
+        ],
+        'sendgrid' => [
+            'username' => '%%%SENDGRID_USERNAME%%%',
+            'password' => '%%%SENDGRID_PASSWORD%%%'
+        ],
+        'session' => [
+            'handler' => 'mongodb',
+            'mongodb' => [
+                'host' => '%%%SESSION_MONGODB_HOST%%%',
+                'database' => 'zoop',
+                'collection' => 'Session',
+                'username' => '%%%SESSION_MONGODB_USERNAME%%%',
+                'password' => '%%%SESSION_MONGODB_PASSWORD%%%',
+                'port' => 27017,
             ]
         ],
     ],
-);
+];

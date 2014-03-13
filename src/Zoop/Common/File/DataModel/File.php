@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Common\DataModel;
+namespace Zoop\Common\File\DataModel;
 
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;

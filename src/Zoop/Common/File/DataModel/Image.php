@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Common\DataModel;
+namespace Zoop\Common\File\DataModel;
 
 use Zoop\Common\DataModel\Url;
 //Annotation imports

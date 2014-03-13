@@ -3,7 +3,6 @@
 return [
     'doctrine' => [
         'eventmanager' => [
-            'sage' => [],
             'commerce' => [],
         ],
         'odm' => [
@@ -165,6 +164,19 @@ return [
                 'password' => '%%%SESSION_MONGODB_PASSWORD%%%',
                 'port' => 27017,
             ]
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            //services
+            'zoop.commerce.common.aws.s3' => 'Zoop\Common\Aws\Service\S3Factory',
+            'zoop.commerce.common.email.sendgrid' => 'Zoop\Common\Email\Service\SendGridFactory',
+            'zoop.commerce.common.file.image.upload' => 'Zoop\Common\File\Service\ImageUploadFactory',
+            'zoop.commerce.common.file.upload' => 'Zoop\Common\File\Service\UploadFactory',
+            'zoop.commerce.common.file.image' => 'Zoop\Common\File\Service\ImageFactory',
+            'zoop.commerce.common.database.entitymanager' => 'Zoop\Common\Database\Service\EntityManagerFactory',
+            'zoop.commerce.common.database.database' => 'Zoop\Common\Database\Service\DatabaseManagerFactory',
+            'zoop.commerce.common.database.session' => 'Zoop\Common\Database\Service\SessionManagerFactory',
         ],
     ],
 ];

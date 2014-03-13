@@ -9,7 +9,6 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class S3Factory implements FactoryInterface
 {
     /**
-     *
      * @param ServiceLocatorInterface $serviceLocator
      * @return S3
      */

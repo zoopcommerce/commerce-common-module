@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "de7c36ba298e9ded98001e403102812c",
+    "hash": "4f91bfac3f2e5134b7c0faec39e74b12",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1156,6 +1156,58 @@
                 "web service"
             ],
             "time": "2014-01-28 22:29:15"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "2ab2237f2445ea30fdf00fdd2ff4f2d8072e87ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/f64ec666baaa800edcbf237db41121a569230709",
+                "reference": "2ab2237f2445ea30fdf00fdd2ff4f2d8072e87ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2014-03-07 15:00:25"
         },
         {
             "name": "mashape/unirest-php",
@@ -2922,6 +2974,12 @@
             "alias": "dev-master",
             "alias_normalized": "9999999-dev",
             "version": "9999999-dev",
+            "package": "imagine/imagine"
+        },
+        {
+            "alias": "dev-master",
+            "alias_normalized": "9999999-dev",
+            "version": "9999999-dev",
             "package": "mashape/unirest-php"
         },
         {
@@ -2940,6 +2998,7 @@
         "doctrine/mongodb-odm": 20,
         "doctrine/orm": 5,
         "dompdf/dompdf": 20,
+        "imagine/imagine": 20,
         "mashape/unirest-php": 20,
         "melihucar/ftpclient": 20,
         "zendframework/zendframework": 20

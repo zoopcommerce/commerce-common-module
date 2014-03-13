@@ -6,9 +6,9 @@ use \Exception;
 use Aws\Common\Aws;
 use Aws\S3\Enum\CannedAcl;
 use Aws\S3\S3Client;
+use Guzzle\Service\Resource\Model;
 
 /**
- *
  *
  * @author Josh
  */
@@ -18,8 +18,8 @@ class S3
     private $key;
     private $secret;
     private $bucket;
-    public static $PUBLIC_ACL = 'public';
-    public static $PRIVATE_ACL = 'private';
+    const PUBLIC_ACL = 'public';
+    const PRIVATE_ACL = 'private';
 
     public function __construct($key, $secret, $bucket)
     {
@@ -108,29 +108,37 @@ class S3
         $this->s3Client = $s3Client;
     }
 
-    public function get($dir, $fileName, $saveLocal = false, $localDir = null, $localFileName = null)
+    /**
+     * Retreive an object from S3
+     *
+     * @param string $key
+     * @return Model
+     * @throws Exception
+     */
+    public function get($key)
     {
         try {
             $query = [
                 'Bucket' => $this->getBucket(),
-                'Key' => $dir . '/' . $fileName
+                'Key' => $key
             ];
-            if ($saveLocal === true) {
-                $query['SaveAs'] = $localDir . '/' . $localFileName;
-            }
 
-            $r = $this->getS3Client()->getObject($query);
+            return $this->getS3Client()->getObject($query);
         } catch (Exception $e) {
-            return false;
-        }
-
-        if ($saveLocal === true) {
-            return $localDir . '/' . $localFileName;
-        } else {
-            return (string) $r->get('Body');
+            throw new Exception($e->getMessage());
         }
     }
 
+    /**
+     * Save an object to S3
+     *
+     * @param string $key
+     * @param string $data
+     * @param string $acl
+     * @param string $contentType
+     * @return Model
+     * @throws Exception
+     */
     public function put($key, $data, $acl = null, $contentType = null)
     {
         try {
@@ -145,71 +153,99 @@ class S3
                 $arguments['ContentType'] = $contentType;
             }
 
-            $r = $this->getS3Client()->putObject($arguments);
-
-            return $r->get('ObjectURL');
+            return $this->getS3Client()->putObject($arguments);
         } catch (Exception $e) {
-            return false;
+            throw new Exception($e->getMessage());
         }
     }
 
+    /**
+     * Copy resources within the same bucket
+     *
+     * @param string $sourceFile
+     * @param string $destFile
+     * @param string $acl
+     * @return Model
+     * @throws Exception
+     */
     public function copy($sourceFile, $destFile, $acl = null)
     {
         try {
-            $r = $this->getS3Client()->copyObject([
+            return $this->getS3Client()->copyObject([
                 'Bucket' => $this->getBucket(),
                 'Key' => $destFile,
-                'CopySource' => $this->getBucket() . '/' . $sourceFile,
+                'CopySource' => $this->getBucket() . DIRECTORY_SEPARATOR . $sourceFile,
                 'ACL' => $this->getAcl($acl)
             ]);
-            return true;
         } catch (Exception $e) {
-            return false;
+            throw new Exception($e->getMessage());
         }
     }
 
-    public function delete($dir, $filename)
+    /**
+     *
+     * @param string $key
+     * @return Model
+     * @throws Exception
+     */
+    public function delete($key)
     {
         try {
-            $r = $this->getS3Client()->deleteObject([
+            return $this->getS3Client()->deleteObject([
                 'Bucket' => $this->getBucket(),
-                'Key' => $dir . '/' . $filename
+                'Key' => $key
             ]);
-            return true;
         } catch (Exception $e) {
-            return false;
+            throw new Exception($e->getMessage());
         }
     }
 
-    public function deleteBatch($files = [])
+    /**
+     *
+     * @param array $files
+     * @return Model
+     * @throws Exception
+     */
+    public function batchDelete($files = [])
     {
         try {
             if (!is_array($files)) {
-                $files = [$files];
+                $files = ['Key' => $files];
             }
-            $r = $this->getS3Client()->deleteObjects([
+
+            return $this->getS3Client()->deleteObjects([
                 'Bucket' => $this->getBucket(),
-                'Objects' => $files
+                'Objects' => $this->formatBatchArray($files)
             ]);
-            return true;
         } catch (Exception $e) {
-            return false;
+            throw new Exception($e->getMessage());
         }
     }
 
-    public function garbageCollection()
+    /**
+     *
+     */
+    public function garbageCollection($dir = '')
     {
-        $dir = "s3://" . $this->getBucket() . "/";
+        $s3 = "s3://" . $this->getBucket() . DIRECTORY_SEPARATOR . $dir;
 
         $this->getS3Client()->registerStreamWrapper();
-        if (is_dir($dir) && ($dh = opendir($dir))) {
+        if (is_dir($s3) && ($dh = opendir($s3))) {
             while (($file = readdir($dh)) !== false) {
-                $file;
+                unlink($file);
             }
             closedir($dh);
         }
     }
 
+    /**
+     *
+     * @param string $key
+     * @param string $filename
+     * @param string $period
+     * @return string|boolean
+     * @throws Exception
+     */
     public function getPreSignedUrl($key, $filename = null, $period = '+10 minutes')
     {
         try {
@@ -225,15 +261,29 @@ class S3
                 return $signedUrl;
             }
         } catch (Exception $e) {
-            return false;
+            throw new Exception($e->getMessage());
         }
         return false;
     }
 
+    private function formatBatchArray($array = [])
+    {
+        $formattedArray = [];
+        foreach ($array as $key => $val) {
+            $formattedArray[$key] = isset($val['Key']) ? $val['Key'] : ['Key' => $val];
+        }
+        return $formattedArray;
+    }
+
+    /**
+     *
+     * @param string $acl
+     * @return string
+     */
     private function getAcl($acl)
     {
         switch ($acl) {
-            case self::$PRIVATE_ACL:
+            case self::PRIVATE_ACL:
                 return CannedAcl::PRIVATE_ACCESS;
                 break;
             default:

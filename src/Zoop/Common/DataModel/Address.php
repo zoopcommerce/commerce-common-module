@@ -2,7 +2,6 @@
 
 namespace Zoop\Common\DataModel;
 
-use Zoop\Common\DataModel\Country;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -44,7 +43,7 @@ class Address
 
     /**
      *
-     * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Country", simple="true")
+     * @ODM\String
      */
     protected $country;
 
@@ -140,7 +139,7 @@ class Address
 
     /**
      *
-     * @return Country
+     * @return string
      */
     public function getCountry()
     {
@@ -149,9 +148,9 @@ class Address
 
     /**
      *
-     * @param Country $country
+     * @param string $country
      */
-    public function setCountry(Country $country)
+    public function setCountry($country)
     {
         $this->country = $country;
     }

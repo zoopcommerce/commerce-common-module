@@ -20,10 +20,10 @@ return [
                     'class_metadata_factory_name' => 'Zoop\Shard\ODMCore\ClassMetadataFactory',
                     'metadata_cache' => 'doctrine.cache.juggernaut.filesystem',
                     'generate_proxies' => false,
-                    'proxy_dir' => __DIR__ . '/../../data/proxies',
+                    'proxy_dir' => __DIR__ . '/../data/proxies',
                     'proxy_namespace' => 'proxies',
                     'generate_hydrators' => false,
-                    'hydrator_dir' => __DIR__ . '/../../data/hydrators',
+                    'hydrator_dir' => __DIR__ . '/../data/hydrators',
                     'hydrator_namespace' => 'hydrators',
                     'default_db' => 'zoop',
                     'driver' => 'doctrine.driver.default',
@@ -136,6 +136,7 @@ return [
                         'extension.serializer' => true,
                         'extension.validator' => true,
                         'extension.stamp' => true,
+                        'extension.zone' => true
                     ],
                     'models' => [
                         'Zoop\Common\DataModel' => __DIR__ . '/../src/Zoop/Common/DataModel',

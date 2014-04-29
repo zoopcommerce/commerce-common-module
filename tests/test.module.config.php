@@ -1,21 +1,22 @@
 <?php
 
+$mongoConnectionString = 'mongodb://localhost:27017';
+$mongoZoopDatabase = 'zoop_test';
+$mysqlZoopDatabase = 'zoop_test';
+
 return [
     'doctrine' => [
         'odm' => [
             'connection' => [
                 'commerce' => [
-                    'dbname' => 'zoop_test',
-                    'server' => 'localhost',
-                    'port' => '27017',
-                    'user' => '',
-                    'password' => '',
+                    'dbname' => $mongoZoopDatabase,
+                    'connectionString' => $mongoConnectionString,
                 ],
             ],
             'configuration' => [
                 'commerce' => [
                     'metadata_cache' => 'doctrine.cache.array',
-                    'default_db' => 'zoop_test',
+                    'default_db' => $mongoZoopDatabase,
                 ]
             ],
         ],
@@ -35,20 +36,19 @@ return [
         ],
         'db' => [
             'host' => 'localhost',
-            'database' => 'zoop_development',
-            'username' => 'root',
-            'password' => 'reverse',
+            'database' => $mysqlZoopDatabase,
+            'username' => 'zoop',
+            'password' => 'yourtown1',
             'port' => 3306,
         ],
         'cache' => [
             'handler' => 'mongodb',
             'mongodb' => [
-                'host' => 'localhost',
-                'database' => 'zoop_test',
-                'collection' => 'Cache',
-                'username' => '',
-                'password' => '',
-                'port' => 27017,
+                'connectionString' => $mongoConnectionString,
+                'options' => [
+                    'database' => $mongoZoopDatabase,
+                    'collection' => 'Cache',
+                ]
             ],
         ],
         'sendgrid' => [
@@ -56,14 +56,17 @@ return [
             'password' => ''
         ],
         'session' => [
+            'ttl' => (60 * 60 * 3), //3 hours
             'handler' => 'mongodb',
             'mongodb' => [
-                'host' => 'localhost',
-                'database' => 'zoop_test',
-                'collection' => 'Session',
-                'username' => '',
-                'password' => '',
-                'port' => 27017,
+                'connectionString' => $mongoConnectionString,
+                'options' => [
+                    'database' => $mongoZoopDatabase,
+                    'collection' => 'Session',
+                    'saveOptions' => [
+                        'w' => 1
+                    ]
+                ]
             ]
         ],
     ]

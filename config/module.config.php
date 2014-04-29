@@ -12,6 +12,7 @@ return [
         'odm' => [
             'connection' => [
                 'commerce' => [
+                    'dbname' => $mongoZoopDatabase,
                     'connectionString' => $mongoConnectionString,
                 ],
             ],
@@ -170,6 +171,9 @@ return [
         ],
     ],
     'service_manager' => [
+        'abstract_factories' => [
+            'Zoop\Common\Session\Service\AbstractContainerFactory' //zoop.commerce.common.session.container.{container_name}
+        ],
         'factories' => [
             //services
             'zoop.commerce.common.aws.s3' => 'Zoop\Common\Aws\Service\S3Factory',

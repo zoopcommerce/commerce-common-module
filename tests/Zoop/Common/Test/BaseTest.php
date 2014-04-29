@@ -7,30 +7,77 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 
 abstract class BaseTest extends AbstractHttpControllerTestCase
 {
-    protected $documentManager;
+    protected static $documentManager;
+    protected static $dbName;
 
     public function setUp()
     {
-        $this->setApplicationConfig(
-            require __DIR__ . '/../../../test.application.config.php'
-        );
-        $dm = $this->getApplicationServiceLocator()->get('doctrine.odm.documentmanager.commerce');
-        $this->setDocumentManager($dm);
+        if (!isset(self::$documentManager)) {
+            $this->setApplicationConfig(
+                require __DIR__ . '/../../../test.application.config.php'
+            );
+            self::$documentManager = $this->getApplicationServiceLocator()->get('shard.commerce.modelmanager');
+        }
+        
+        if (!isset(self::$dbName)) {
+            self::$dbName = $this->getApplicationServiceLocator()->get('config')['doctrine']['odm']['connection']['commerce']['dbname'];
+        }
+    }
+
+    public static function tearDownAfterClass()
+    {
+        self::clearDatabase();
+    }
+
+    /**
+     * Clears all test data from the mongo database
+     */
+    public static function clearDatabase()
+    {
+        if (isset(self::$documentManager)) {
+            $collections = self::getDocumentManager()
+                ->getConnection()
+                ->selectDatabase(self::getDbName())
+                ->listCollections();
+
+            foreach ($collections as $collection) {
+                /* @var $collection \MongoCollection */
+                $collection->drop();
+            }
+        }
     }
 
     /**
      * @return DocumentManager
      */
-    public function getDocumentManager()
+    public static function getDocumentManager()
     {
-        return $this->documentManager;
+        return self::$documentManager;
     }
 
     /**
      * @param DocumentManager $documentManager
      */
-    public function setDocumentManager(DocumentManager $documentManager)
+    public static function setDocumentManager(DocumentManager $documentManager)
     {
-        $this->documentManager = $documentManager;
+        self::$documentManager = $documentManager;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public static function getDbName()
+    {
+        return self::$dbName;
+    }
+
+    /**
+     * 
+     * @param string $dbName
+     */
+    public static function setDbName($dbName)
+    {
+        self::$dbName = $dbName;
     }
 }

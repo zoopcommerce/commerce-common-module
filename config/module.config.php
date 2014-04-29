@@ -1,5 +1,9 @@
 <?php
 
+$mongoConnectionString = 'mongodb://localhost:27017';
+$mongoZoopDatabase = 'zoop_development';
+$mysqlZoopDatabase = 'zoop_development';
+
 return [
     'doctrine' => [
         'eventmanager' => [
@@ -8,11 +12,7 @@ return [
         'odm' => [
             'connection' => [
                 'commerce' => [
-                    'dbname' => 'zoop',
-                    'server' => '%%%COMMERCE_MONGODB_HOST%%%',
-                    'port' => '27017',
-                    'user' => '%%%COMMERCE_MONGODB_USERNAME%%%',
-                    'password' => '%%%COMMERCE_MONGODB_PASSWORD%%%',
+                    'connectionString' => $mongoConnectionString,
                 ],
             ],
             'configuration' => [
@@ -25,7 +25,7 @@ return [
                     'generate_hydrators' => false,
                     'hydrator_dir' => __DIR__ . '/../data/hydrators',
                     'hydrator_namespace' => 'hydrators',
-                    'default_db' => 'zoop',
+                    'default_db' => $mongoZoopDatabase,
                     'driver' => 'doctrine.driver.default',
                 ]
             ],
@@ -72,22 +72,21 @@ return [
             ]
         ],
         'db' => [
-            'host' => '%%%RDS_HOST%%%',
-            'database' => 'zoop_commerce',
-            'username' => '%%%RDS_USERNAME%%%',
-            'password' => '%%%RDS_PASSWORD%%%',
+            'host' => 'localhost',
+            'database' => $mysqlZoopDatabase,
+            'username' => 'zoop',
+            'password' => 'yourtown1',
             'port' => 3306,
         ],
         'cache' => [
             'directory' => __DIR__ . '/../../data/cache/',
             'handler' => 'mongodb',
             'mongodb' => [
-                'host' => '%%%CACHE_MONGODB_HOST%%%',
-                'database' => 'zoop',
-                'collection' => 'Cache',
-                'username' => '%%%CACHE_MONGODB_USERNAME%%%',
-                'password' => '%%%CACHE_MONGODB_PASSWORD%%%',
-                'port' => 27017,
+                'connectionString' => $mongoConnectionString,
+                'options' => [
+                    'database' => $mongoZoopDatabase,
+                    'collection' => 'Cache',
+                ]
             ],
             'sql' => 300, //ttl in seconds
             'ttl' => 300, //ttl in seconds
@@ -156,14 +155,17 @@ return [
             'password' => '%%%SENDGRID_PASSWORD%%%'
         ],
         'session' => [
+            'ttl' => (60 * 60 * 3), //3 hours
             'handler' => 'mongodb',
             'mongodb' => [
-                'host' => '%%%SESSION_MONGODB_HOST%%%',
-                'database' => 'zoop',
-                'collection' => 'Session',
-                'username' => '%%%SESSION_MONGODB_USERNAME%%%',
-                'password' => '%%%SESSION_MONGODB_PASSWORD%%%',
-                'port' => 27017,
+                'connectionString' => $mongoConnectionString,
+                'options' => [
+                    'database' => $mongoZoopDatabase,
+                    'collection' => 'Session',
+                    'saveOptions' => [
+                        'w' => 1
+                    ]
+                ]
             ]
         ],
     ],
@@ -177,7 +179,8 @@ return [
             'zoop.commerce.common.file.image' => 'Zoop\Common\File\Service\ImageFactory',
             'zoop.commerce.common.database.entitymanager' => 'Zoop\Common\Database\Service\EntityManagerFactory',
             'zoop.commerce.common.database.database' => 'Zoop\Common\Database\Service\DatabaseManagerFactory',
-            'zoop.commerce.common.database.session' => 'Zoop\Common\Database\Service\SessionManagerFactory',
+            'zoop.commerce.common.session' => 'Zoop\Common\Session\Service\SessionManagerFactory',
+            'zoop.commerce.common.session.handler.mongodb' => 'Zoop\Common\Session\Service\MongoDbSessionHandlerFactory',
         ],
     ],
 ];

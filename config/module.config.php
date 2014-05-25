@@ -136,6 +136,7 @@ return [
                         'extension.serializer' => true,
                         'extension.validator' => true,
                         'extension.stamp' => true,
+                        'extension.state' => true,
                         'extension.zone' => true
                     ],
                     'models' => [

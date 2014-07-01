@@ -41,10 +41,10 @@ return [
         //need to fix up ORM
         'orm' => [
             'generate_proxies' => false,
-            'proxy_dir' => __DIR__ . '/../../data/proxies',
+            'proxy_dir' => __DIR__ . '/../data/proxies',
             'proxy_namespace' => 'proxies',
             'generate_hydrators' => false,
-            'hydrator_dir' => __DIR__ . '/../../data/hydrators',
+            'hydrator_dir' => __DIR__ . '/../data/hydrators',
             'hydrator_namespace' => 'hydrators',
             'paths' => [
                 'Zoop\Legacy\Entity' => __DIR__ . '/../module/src/Zoop/Legacy/Entity',
@@ -80,7 +80,7 @@ return [
             'port' => 3306,
         ],
         'cache' => [
-            'directory' => __DIR__ . '/../../data/cache/',
+            'directory' => __DIR__ . '/../data/cache/',
             'handler' => 'mongodb',
             'mongodb' => [
                 'connectionString' => $mongoConnectionString,
@@ -94,7 +94,7 @@ return [
             'page' => 300, //ttl in seconds
         ],
         'file_upload' => [
-            'temp_dir' => __DIR__ . '/../../data/temp',
+            'temp_dir' => __DIR__ . '/../data/temp',
             's3_temp_dir' => 'temp',
         ],
         'email' => [

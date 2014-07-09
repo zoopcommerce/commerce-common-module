@@ -186,6 +186,7 @@ return [
             'zoop.commerce.common.database.database' => 'Zoop\Common\Database\Service\DatabaseManagerFactory',
             'zoop.commerce.common.session' => 'Zoop\Common\Session\Service\SessionManagerFactory',
             'zoop.commerce.common.session.handler.mongodb' => 'Zoop\Common\Session\Service\MongoDbSessionHandlerFactory',
+            'zoop.commerce.common.filterlistener.softdeleted' => 'Zoop\Common\SoftDeletedFilterListener',
         ],
     ],
 ];

@@ -13,7 +13,8 @@ use Zend\Mvc\MvcEvent;
  * @author  Josh Stuart <josh.stuart@zoopcommerce.com>
  */
 class Module
-{    /**
+{    
+    /**
      * @param \Zend\EventManager\Event $event
      */
     public function onBootstrap(MvcEvent $event)

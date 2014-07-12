@@ -175,6 +175,9 @@ return [
         'abstract_factories' => [
             'Zoop\Common\Session\Service\AbstractContainerFactory' //zoop.commerce.common.session.container.{container_name}
         ],
+        'invokables' => [
+            'zoop.commerce.common.filterlistener.softdeleted' => 'Zoop\Common\SoftDeletedFilterListener',
+        ],
         'factories' => [
             //services
             'zoop.commerce.common.aws.s3' => 'Zoop\Common\Aws\Service\S3Factory',
@@ -186,7 +189,6 @@ return [
             'zoop.commerce.common.database.database' => 'Zoop\Common\Database\Service\DatabaseManagerFactory',
             'zoop.commerce.common.session' => 'Zoop\Common\Session\Service\SessionManagerFactory',
             'zoop.commerce.common.session.handler.mongodb' => 'Zoop\Common\Session\Service\MongoDbSessionHandlerFactory',
-            'zoop.commerce.common.filterlistener.softdeleted' => 'Zoop\Common\SoftDeletedFilterListener',
         ],
     ],
 ];

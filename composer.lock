@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8c470c76a3e96d2b9e6e91e42725375c",
+    "hash": "0b32788361c1d7a37fb1e01937e38f0f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.6.11",
+            "version": "2.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1ffd7d850c8c40f97befa917a58467db101786a4"
+                "reference": "88d075461e95111a5e42ead60c68e847c1856cc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1ffd7d850c8c40f97befa917a58467db101786a4",
-                "reference": "1ffd7d850c8c40f97befa917a58467db101786a4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/88d075461e95111a5e42ead60c68e847c1856cc3",
+                "reference": "88d075461e95111a5e42ead60c68e847c1856cc3",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2014-07-10 21:15:25"
+            "time": "2014-07-16 21:01:13"
         },
         {
             "name": "codeguy/upload",
@@ -1347,16 +1347,16 @@
         },
         {
             "name": "sendgrid/sendgrid",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/sendgrid-php.git",
-                "reference": "a46ad3c8c5dd39a59a1054d80a111121e6eaf556"
+                "reference": "3fba6604d46c584547762c0ececdd98ea78709dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/a46ad3c8c5dd39a59a1054d80a111121e6eaf556",
-                "reference": "a46ad3c8c5dd39a59a1054d80a111121e6eaf556",
+                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/3fba6604d46c584547762c0ececdd98ea78709dd",
+                "reference": "3fba6604d46c584547762c0ececdd98ea78709dd",
                 "shasum": ""
             },
             "require": {
@@ -1389,7 +1389,7 @@
                 "send",
                 "sendgrid"
             ],
-            "time": "2014-07-10 17:41:31"
+            "time": "2014-07-17 17:19:22"
         },
         {
             "name": "sendgrid/smtpapi",
@@ -1441,17 +1441,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "2e3df33dd72a9cdef7e9745d930e29ff844fe055"
+                "reference": "386fa63407805959bd2c5fe540294721ad4224c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/2e3df33dd72a9cdef7e9745d930e29ff844fe055",
-                "reference": "2e3df33dd72a9cdef7e9745d930e29ff844fe055",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/386fa63407805959bd2c5fe540294721ad4224c8",
+                "reference": "386fa63407805959bd2c5fe540294721ad4224c8",
                 "shasum": ""
             },
             "require": {
@@ -1494,21 +1494,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-15 14:15:12"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "84533bf98da5486b9395a1d95e9184e04e14aad3"
+                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/84533bf98da5486b9395a1d95e9184e04e14aad3",
-                "reference": "84533bf98da5486b9395a1d95e9184e04e14aad3",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/2215d2ef6fd7ab24d55576a3d924df575c741762",
+                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762",
                 "shasum": ""
             },
             "require": {
@@ -1553,7 +1553,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-09 09:05:48"
         },
         {
             "name": "willdurand/geocoder",
@@ -2043,16 +2043,16 @@
         },
         {
             "name": "zoopcommerce/shard",
-            "version": "4.1.1",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zoopcommerce/shard.git",
-                "reference": "ff238fa34053d1673243852ce35da23e9faf9a98"
+                "reference": "abb78fe0b1250b7d5a2a34ad18fdb64be6fec291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zoopcommerce/shard/zipball/ff238fa34053d1673243852ce35da23e9faf9a98",
-                "reference": "ff238fa34053d1673243852ce35da23e9faf9a98",
+                "url": "https://api.github.com/repos/zoopcommerce/shard/zipball/abb78fe0b1250b7d5a2a34ad18fdb64be6fec291",
+                "reference": "abb78fe0b1250b7d5a2a34ad18fdb64be6fec291",
                 "shasum": ""
             },
             "require": {
@@ -2086,14 +2086,11 @@
             "authors": [
                 {
                     "name": "Tim Roediger",
-                    "email": "superdweebie@gmail.com",
-                    "homepage": "http://superdweebie.com"
+                    "email": "superdweebie@gmail.com"
                 },
                 {
                     "name": "Josh Stuart",
-                    "email": "josh.stuart@zoopcommerce.com",
-                    "homepage": "http://github.com/crimsonronin",
-                    "role": "Developer"
+                    "email": "josh.stuart@zoopcommerce.com"
                 }
             ],
             "description": "Add new behaviours to Doctrine Mongo ODM Documents",
@@ -2104,20 +2101,20 @@
                 "odm",
                 "zoop"
             ],
-            "time": "2014-06-15 04:07:38"
+            "time": "2014-07-21 12:34:18"
         },
         {
             "name": "zoopcommerce/shard-module",
-            "version": "3.1.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zoopcommerce/shard-module.git",
-                "reference": "b5771030a37ff5caf580d79b0cbda3b6487fc994"
+                "reference": "90a08a0b3549bc75a030162308ada41679763aea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zoopcommerce/shard-module/zipball/b5771030a37ff5caf580d79b0cbda3b6487fc994",
-                "reference": "b5771030a37ff5caf580d79b0cbda3b6487fc994",
+                "url": "https://api.github.com/repos/zoopcommerce/shard-module/zipball/90a08a0b3549bc75a030162308ada41679763aea",
+                "reference": "90a08a0b3549bc75a030162308ada41679763aea",
                 "shasum": ""
             },
             "require": {
@@ -2129,7 +2126,7 @@
                 "zendframework/zendframework": "~2.3",
                 "zoopcommerce/juggernaut": "~1.1",
                 "zoopcommerce/maggott-module": "~1.1",
-                "zoopcommerce/shard": "~4.1"
+                "zoopcommerce/shard": "~5.0"
             },
             "require-dev": {
                 "pdepend/pdepend": "1.1.1",
@@ -2148,14 +2145,11 @@
             "authors": [
                 {
                     "name": "Tim Roediger",
-                    "email": "superdweebie@gmail.com",
-                    "homepage": "http://superdweebie.com"
+                    "email": "superdweebie@gmail.com"
                 },
                 {
                     "name": "Josh Stuart",
-                    "email": "josh.stuart@zoopcommerce.com",
-                    "homepage": "http://github.com/crimsonronin",
-                    "role": "Developer"
+                    "email": "josh.stuart@zoopcommerce.com"
                 }
             ],
             "description": "Zend Framework 2 Module for Shard",
@@ -2167,7 +2161,7 @@
                 "zf2",
                 "zoop"
             ],
-            "time": "2014-06-09 06:36:28"
+            "time": "2014-07-21 12:49:22"
         }
     ],
     "packages-dev": [
@@ -2490,16 +2484,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.1.3",
+            "version": "4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "939cb801b3b2aa253aedd0b279f40bb8f35cec91"
+                "reference": "a71c4842c5fb836d8b200624583b859ec34e8a26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/939cb801b3b2aa253aedd0b279f40bb8f35cec91",
-                "reference": "939cb801b3b2aa253aedd0b279f40bb8f35cec91",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a71c4842c5fb836d8b200624583b859ec34e8a26",
+                "reference": "a71c4842c5fb836d8b200624583b859ec34e8a26",
                 "shasum": ""
             },
             "require": {
@@ -2560,7 +2554,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-06-11 14:15:47"
+            "time": "2014-07-18 07:15:58"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2960,17 +2954,17 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/Config",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "94f0c86c76a74ec9d09ef361e1476d5a66be9ff2"
+                "reference": "a31aa8029bcc0b5b85578328050aa70d052e177b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/94f0c86c76a74ec9d09ef361e1476d5a66be9ff2",
-                "reference": "94f0c86c76a74ec9d09ef361e1476d5a66be9ff2",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/a31aa8029bcc0b5b85578328050aa70d052e177b",
+                "reference": "a31aa8029bcc0b5b85578328050aa70d052e177b",
                 "shasum": ""
             },
             "require": {
@@ -3006,21 +3000,21 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-09 09:05:48"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/DependencyInjection",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "7bc387ce1fe800ac4f52275f2bf06f0beb927b27"
+                "reference": "59984a9e6f18875751469dea073f6d24fd59f4a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/7bc387ce1fe800ac4f52275f2bf06f0beb927b27",
-                "reference": "7bc387ce1fe800ac4f52275f2bf06f0beb927b27",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/59984a9e6f18875751469dea073f6d24fd59f4a7",
+                "reference": "59984a9e6f18875751469dea073f6d24fd59f4a7",
                 "shasum": ""
             },
             "require": {
@@ -3065,21 +3059,21 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-09 09:05:48"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "92d5e2f4ebc89fa7573688caffa2363ed995843d"
+                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/92d5e2f4ebc89fa7573688caffa2363ed995843d",
-                "reference": "92d5e2f4ebc89fa7573688caffa2363ed995843d",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
+                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
                 "shasum": ""
             },
             "require": {
@@ -3114,21 +3108,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-09 09:05:48"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "1057e87364c0b38b50f5695fc9df9dd189036bec"
+                "reference": "f868ecdbcc0276b6158dfbf08b9e98ce07f014e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1057e87364c0b38b50f5695fc9df9dd189036bec",
-                "reference": "1057e87364c0b38b50f5695fc9df9dd189036bec",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/f868ecdbcc0276b6158dfbf08b9e98ce07f014e1",
+                "reference": "f868ecdbcc0276b6158dfbf08b9e98ce07f014e1",
                 "shasum": ""
             },
             "require": {
@@ -3163,7 +3157,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-08 12:21:33"
+            "time": "2014-07-09 09:05:48"
         },
         {
             "name": "zoopcommerce/slipstream",
@@ -3247,6 +3241,7 @@
         "dompdf/dompdf": 20,
         "melihucar/ftpclient": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.4"
     },

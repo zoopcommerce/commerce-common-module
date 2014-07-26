@@ -2043,16 +2043,16 @@
         },
         {
             "name": "zoopcommerce/shard",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zoopcommerce/shard.git",
-                "reference": "abb78fe0b1250b7d5a2a34ad18fdb64be6fec291"
+                "reference": "14dde6ff25bc3125ad35667c8ff65cb755750b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zoopcommerce/shard/zipball/abb78fe0b1250b7d5a2a34ad18fdb64be6fec291",
-                "reference": "abb78fe0b1250b7d5a2a34ad18fdb64be6fec291",
+                "url": "https://api.github.com/repos/zoopcommerce/shard/zipball/14dde6ff25bc3125ad35667c8ff65cb755750b27",
+                "reference": "14dde6ff25bc3125ad35667c8ff65cb755750b27",
                 "shasum": ""
             },
             "require": {
@@ -2101,7 +2101,7 @@
                 "odm",
                 "zoop"
             ],
-            "time": "2014-07-21 12:34:18"
+            "time": "2014-07-23 10:58:01"
         },
         {
             "name": "zoopcommerce/shard-module",

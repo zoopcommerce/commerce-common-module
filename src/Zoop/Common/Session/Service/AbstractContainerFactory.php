@@ -17,6 +17,8 @@ class AbstractContainerFactory implements AbstractFactoryInterface
      * @param string $name
      * @param string $requestedName
      * @return boolean
+     * 
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
@@ -28,6 +30,8 @@ class AbstractContainerFactory implements AbstractFactoryInterface
      * @param string $name
      * @param string $requestedName
      * @return Container
+     * 
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {

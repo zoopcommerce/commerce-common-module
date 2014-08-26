@@ -11,6 +11,8 @@ class GuestFactory implements FactoryInterface
     /**
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
      * @return \Zend\Authentication\AuthenticationService
+     * 
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

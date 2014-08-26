@@ -17,9 +17,17 @@ class Email extends AbstractEmail implements EmailInterface
     const HOST = 'smtp.sendgrid.net';
     const PORT = 465;
 
-    private $mail;
-    private $sendgrid;
+    protected $mail;
+    protected $sendgrid;
 
+    /** 
+     * @param string $username
+     * @param string $password
+     * @param string $host
+     * @param int $port
+     * 
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function __construct($username, $password, $host = null, $port = null)
     {
         $this->sendgrid = new SendGrid($username, $password);
@@ -52,7 +60,7 @@ class Email extends AbstractEmail implements EmailInterface
         return false;
     }
 
-    private function addAttatchments()
+    protected function addAttatchments()
     {
         $files = $this->getAttachments();
         if (is_array($files)) {
@@ -63,7 +71,7 @@ class Email extends AbstractEmail implements EmailInterface
         return $this;
     }
 
-    private function addToAddresses()
+    protected function addToAddresses()
     {
         $emails = $this->getTo();
         if (is_array($emails)) {
@@ -74,7 +82,7 @@ class Email extends AbstractEmail implements EmailInterface
         return $this;
     }
 
-    private function addCcAddresses()
+    protected function addCcAddresses()
     {
         $emails = $this->getCc();
         if (is_array($emails)) {
@@ -85,7 +93,7 @@ class Email extends AbstractEmail implements EmailInterface
         return $this;
     }
 
-    private function addBccAddresses()
+    protected function addBccAddresses()
     {
         $emails = $this->getBcc();
         if (is_array($emails)) {
@@ -96,7 +104,7 @@ class Email extends AbstractEmail implements EmailInterface
         return $this;
     }
 
-    private function addSubstitutions()
+    protected function addSubstitutions()
     {
         $subs = $this->getSubstitution();
         if (is_array($subs)) {

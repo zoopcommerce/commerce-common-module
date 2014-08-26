@@ -132,25 +132,11 @@ abstract class AbstractEmail
         return $this->attachments;
     }
 
-    private function getHtmlBody()
-    {
-        $html = null;
-
-        return $html;
-    }
-
     public function setTemplate($template)
     {
         if (!empty($template)) {
             $this->template = $template;
         }
         return $this;
-    }
-
-    public function setHtmlTemplate($template, $subFolder = '_defaut', $vars = [])
-    {
-        if (!empty($template)) {
-
-        }
     }
 }

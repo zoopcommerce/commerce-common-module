@@ -72,7 +72,7 @@ class Sftp
     public function setConnection($connection)
     {
         if (!$connection) {
-            throw new Exception("Could not connect to $host on port $port.");
+            throw new Exception("Could not connect");
         }
         $this->connection = $connection;
     }

@@ -5,7 +5,7 @@ namespace Zoop\Common\Test;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
-abstract class BaseTest extends AbstractHttpControllerTestCase
+abstract class AbstractTest extends AbstractHttpControllerTestCase
 {
     protected static $documentManager;
     protected static $dbName;
@@ -16,11 +16,13 @@ abstract class BaseTest extends AbstractHttpControllerTestCase
             $this->setApplicationConfig(
                 require __DIR__ . '/../../../test.application.config.php'
             );
-            self::$documentManager = $this->getApplicationServiceLocator()->get('shard.commerce.modelmanager');
+            self::$documentManager = $this->getApplicationServiceLocator()
+                ->get('shard.commerce.modelmanager');
         }
-        
+
         if (!isset(self::$dbName)) {
-            self::$dbName = $this->getApplicationServiceLocator()->get('config')['doctrine']['odm']['connection']['commerce']['dbname'];
+            self::$dbName = $this->getApplicationServiceLocator()
+                ->get('config')['doctrine']['odm']['connection']['commerce']['dbname'];
         }
     }
 
@@ -64,7 +66,7 @@ abstract class BaseTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public static function getDbName()
@@ -73,7 +75,7 @@ abstract class BaseTest extends AbstractHttpControllerTestCase
     }
 
     /**
-     * 
+     *
      * @param string $dbName
      */
     public static function setDbName($dbName)

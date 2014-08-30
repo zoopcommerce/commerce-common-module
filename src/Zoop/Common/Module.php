@@ -13,7 +13,7 @@ use Zend\Mvc\MvcEvent;
  * @author  Josh Stuart <josh.stuart@zoopcommerce.com>
  */
 class Module
-{    
+{
     /**
      * @param \Zend\EventManager\Event $event
      */
@@ -25,7 +25,7 @@ class Module
 
         $eventManager->attach($serviceManager->get('zoop.commerce.common.filterlistener.softdeleted'));
     }
-    
+
     /**
      *
      * @return array

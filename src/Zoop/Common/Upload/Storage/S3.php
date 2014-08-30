@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Common\Upload\Storage\S3;
+namespace Zoop\Common\Upload\Storage;
 
 use Upload\File;
 use Upload\Storage\Base;

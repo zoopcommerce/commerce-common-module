@@ -2,12 +2,12 @@
 
 namespace Zoop\Common\Test\Session;
 
-use Zoop\Common\Test\BaseTest;
+use Zoop\Common\Test\AbstractTest;
 use Zend\Session\Container;
 use Zend\Session\ManagerInterface;
 use Zend\Session\SaveHandler\SaveHandlerInterface;
 
-class SessionTest extends BaseTest
+class SessionTest extends AbstractTest
 {
     /**
      * @runInSeparateProcess

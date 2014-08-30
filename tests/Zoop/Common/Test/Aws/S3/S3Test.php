@@ -1,17 +1,17 @@
 <?php
 
-namespace Zoop\Common\Test\S3;
+namespace Zoop\Common\Test\Aws\S3;
 
 use \Exception;
-use Zoop\Common\Test\BaseTest;
+use Zoop\Common\Test\AbstractTest;
 use Zoop\Common\Aws\S3\S3 as S3Client;
 
-class S3Test extends BaseTest
+class S3Test extends AbstractTest
 {
     const FILENAME_1 = 'test1.txt';
     const FILENAME_2 = 'test2.txt';
 
-    protected $s3;
+    protected static $s3;
 
     public function testDefaultPut()
     {
@@ -84,12 +84,12 @@ class S3Test extends BaseTest
      */
     protected function getS3()
     {
-        if (!isset($this->s3)) {
+        if (!isset(self::$s3)) {
             $config = $this->getApplicationServiceLocator()->get('config')['zoop']['aws'];
 
-            $this->s3 = new S3Client($config['key'], $config['secret'], $config['s3']['buckets']['test']);
+            self::$s3 = new S3Client($config['key'], $config['secret'], $config['s3']['buckets']['test']);
         }
-        return $this->s3;
+        return self::$s3;
     }
 
     public function initFilename()

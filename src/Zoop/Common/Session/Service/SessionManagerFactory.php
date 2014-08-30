@@ -24,7 +24,6 @@ class SessionManagerFactory implements FactoryInterface
             $manager = new SessionManager();
             $manager->setSaveHandler($handler);
 
-//            Container::setDefaultManager($manager);
             $queryStringSession = filter_input(INPUT_GET, 's');
 
             if (!empty($queryStringSession)) {
@@ -35,5 +34,4 @@ class SessionManagerFactory implements FactoryInterface
             return $manager;
         }
     }
-
 }

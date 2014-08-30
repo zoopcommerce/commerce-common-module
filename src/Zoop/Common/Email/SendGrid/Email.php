@@ -20,12 +20,12 @@ class Email extends AbstractEmail implements EmailInterface
     protected $mail;
     protected $sendgrid;
 
-    /** 
+    /**
      * @param string $username
      * @param string $password
      * @param string $host
      * @param int $port
-     * 
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function __construct($username, $password, $host = null, $port = null)

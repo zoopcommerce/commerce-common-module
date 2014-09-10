@@ -12,7 +12,7 @@ services:
   - mongodb
 
 env:
-    secure: WBUmsTCVkr8Iz/DG6XP6MgOYVJIWLqCDKy8iqQxrZIJmUB54ASPdnux1byql9jnPBRvYyq7ilHPs6jer5nuDrZkKl/3bTPfHZD0GoW+pp7AMZEqUmHR+0+sABEd3j8QecGzUYKAq1S2/e942ywwLmXD1wk37hDoceP2lyNc89e966787iBula59JLjjUXUhH5HcyaX6znYmftMRlFCyWBIct6+YJONDMreuxTsS1c3E+KfFjjQpmoNA9if7M4+vR4vjmVOQvA9l1H0zg8SOCiqEMADnJ1KnkjgXAleuCqiS3XT5/rY8huN/ddMGiKXh59qbHMLvGura2IGQxA346rQ==
+  - secure: j6HrKTI0NnVQLwjG/Nhtd7+hVhHXFqfdYLleez8CIGPKHJ2RQGAoAqv1ftDCbGmLjcPpz9+RH32wE5xr8kgB9zws8wK2LP6UAjlA1O58gUJU9KDX4aPLJN2jtsasqzIoG5yITNbd46+uo6Ewj9BNt+yg69ZIe+vborXmnLZSnvC58LDE2TIT7XCns+onqcA0iQU5WO5Un7PV+hPVtWfAzyvcYkdhOxEMkFS5B7T+BeJwkDzZF4KU+cJm2nKGgaQYqJ+lcZHxB0krYmappzVMNrn6p+dBRcxx8CK5JrZCsvwfyPjoO+hlpgcMouh7PmZVvKYSVUtKaWjrbmi53RPWhQ==
 
 before_script: 
   - mkdir -p shippable/testresults
@@ -27,7 +27,6 @@ script:
   - phpunit --log-junit shippable/testresults/junit.xml --coverage-clover shippable/codecoverage/clover.xml tests/
   - vendor/bin/phpcs --standard=PSR2 src/ tests/Zoop/
   - vendor/bin/phpmd src/ text ruleset.xml
-
 
 notifications:
    email: false

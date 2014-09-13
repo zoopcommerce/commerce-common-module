@@ -8,24 +8,26 @@ use Zoop\Common\Aws\S3\S3 as S3Client;
 
 class S3Test extends AbstractTest
 {
-    const FILENAME_1 = 'test1.txt';
-    const FILENAME_2 = 'test2.txt';
-
     protected static $s3;
 
     public function testDefaultPut()
     {
+        $filename = uniqid() . '.txt';
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
-        $r = $this->getS3()->put(self::FILENAME_1, $data);
+        $r = $this->getS3()->put($filename, $data);
 
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
+        return $filename;
     }
 
-    public function testGet()
+    /**
+     * @depends testDefaultPut
+     */
+    public function testGet($filename)
     {
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
 
-        $r = $this->getS3()->get(self::FILENAME_1);
+        $r = $this->getS3()->get($filename);
 
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
         $this->assertEquals($data, $r->get('Body'));
@@ -33,27 +35,38 @@ class S3Test extends AbstractTest
 
     public function testCopy()
     {
+        $filename1 = uniqid() . '.txt';
+        $filename2 = uniqid() . '.txt';
+        
         //put the object
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
-        $r = $this->getS3()->put(self::FILENAME_1, $data);
+        $r = $this->getS3()->put($filename1, $data);
 
         //copy the uploaded object
-        $r = $this->getS3()->copy(self::FILENAME_1, self::FILENAME_2);
+        $r = $this->getS3()->copy($filename1, $filename2);
         $this->assertNotEmpty($r);
 
         //get the copied object
-        $r = $this->getS3()->get(self::FILENAME_2);
+        $r = $this->getS3()->get($filename2);
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
         $this->assertEquals($data, $r->get('Body'));
+        
+        return [
+            $filename1,
+            $filename2
+        ];
     }
 
-    public function testBatchDelete()
+    /**
+     * @depends testCopy
+     */
+    public function testBatchDelete($files)
     {
-        $r = $this->getS3()->batchDelete([self::FILENAME_1, self::FILENAME_2]);
+        $r = $this->getS3()->batchDelete($files);
         $this->assertNotEmpty($r);
 
         try {
-            $r = $this->getS3()->get(self::FILENAME_2);
+            $r = $this->getS3()->get($files[0]);
         } catch (Exception $ex) {
             $this->assertInstanceOf('\Exception', $ex);
         }
@@ -61,16 +74,18 @@ class S3Test extends AbstractTest
 
     public function testContentTypePut()
     {
+        $filename = uniqid() . '.txt';
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
-        $r = $this->getS3()->put(self::FILENAME_1, $data, S3Client::PUBLIC_ACL, 'text/css');
+        $r = $this->getS3()->put($filename, $data, S3Client::PUBLIC_ACL, 'text/css');
 
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
     }
 
     public function testPrivateAclPut()
     {
+        $filename = uniqid() . '.txt';
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
-        $r = $this->getS3()->put(self::FILENAME_1, $data, S3Client::PRIVATE_ACL);
+        $r = $this->getS3()->put($filename, $data, S3Client::PRIVATE_ACL);
 
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
         $url = $r->get('ObjectURL');

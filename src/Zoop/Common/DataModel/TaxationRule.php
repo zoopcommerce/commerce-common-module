@@ -80,7 +80,7 @@ class TaxationRule implements TaxationRuleInterface
         $this->number = $number;
     }
 
-    public function getIsShippingTaxed()
+    public function isShippingTaxed()
     {
         return $this->isShippingTaxed;
     }
@@ -90,7 +90,7 @@ class TaxationRule implements TaxationRuleInterface
         $this->isShippingTaxed = (boolean) $isShippingTaxed;
     }
 
-    public function getIsTaxIncluded()
+    public function isTaxIncluded()
     {
         return $this->isTaxIncluded;
     }
@@ -100,7 +100,7 @@ class TaxationRule implements TaxationRuleInterface
         $this->isTaxIncluded = (boolean) $isTaxIncluded;
     }
 
-    public function getIsTaxRemoved()
+    public function isTaxRemoved()
     {
         return $this->isTaxRemoved;
     }

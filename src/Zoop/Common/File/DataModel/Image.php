@@ -2,7 +2,8 @@
 
 namespace Zoop\Common\File\DataModel;
 
-use Zoop\Common\DataModel\Url;
+use Zoop\Common\DataModel\UrlInterface;
+use Zoop\Common\File\DataModel\ImageInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -10,7 +11,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 /**
  * @ODM\EmbeddedDocument
  */
-class Image
+class Image implements ImageInterface
 {
     /**
      * @ODM\Id(strategy="UUID")
@@ -24,7 +25,6 @@ class Image
     protected $legacyId;
 
     /**
-     *
      * @ODM\String
      */
     protected $alt;
@@ -40,26 +40,22 @@ class Image
     protected $extension;
 
     /**
-     *
      * @ODM\Int
      */
     protected $height;
 
     /**
-     *
      * @ODM\Int
      */
     protected $width;
 
     /**
-     *
      * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Url")
      * @Shard\Validator\Required
      */
     protected $url;
 
     /**
-     *
      * @return string
      */
     public function getAlt()
@@ -68,7 +64,6 @@ class Image
     }
 
     /**
-     *
      * @param string $alt
      */
     public function setAlt($alt)
@@ -77,7 +72,6 @@ class Image
     }
 
     /**
-     *
      * @return string
      */
     public function getMime()
@@ -86,7 +80,6 @@ class Image
     }
 
     /**
-     *
      * @param string $mime
      */
     public function setMime($mime)
@@ -95,7 +88,6 @@ class Image
     }
 
     /**
-     *
      * @return integer
      */
     public function getHeight()
@@ -104,7 +96,6 @@ class Image
     }
 
     /**
-     *
      * @param integer $height
      */
     public function setHeight($height)
@@ -113,7 +104,6 @@ class Image
     }
 
     /**
-     *
      * @return integer
      */
     public function getWidth()
@@ -122,7 +112,6 @@ class Image
     }
 
     /**
-     *
      * @param integer $width
      */
     public function setWidth($width)
@@ -131,8 +120,7 @@ class Image
     }
 
     /**
-     *
-     * @return Url
+     * @return UrlInterface
      */
     public function getUrl()
     {
@@ -140,16 +128,14 @@ class Image
     }
 
     /**
-     *
-     * @param Url $url
+     * @param UrlInterface $url
      */
-    public function setUrl(Url $url)
+    public function setUrl(UrlInterface $url)
     {
         $this->url = $url;
     }
 
     /**
-     *
      * @return string
      */
     public function getId()
@@ -158,25 +144,6 @@ class Image
     }
 
     /**
-     *
-     * @return integer
-     */
-    public function getLegacyId()
-    {
-        return $this->legacyId;
-    }
-
-    /**
-     *
-     * @param integer $legacyId
-     */
-    public function setLegacyId($legacyId)
-    {
-        $this->legacyId = $legacyId;
-    }
-
-    /**
-     *
      * @return string
      */
     public function getExtension()
@@ -185,7 +152,6 @@ class Image
     }
 
     /**
-     *
      * @param string $extension
      */
     public function setExtension($extension)

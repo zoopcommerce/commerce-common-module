@@ -2,6 +2,7 @@
 
 namespace Zoop\Common\DataModel;
 
+use Zoop\Common\DataModel\UrlInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -12,7 +13,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class Url
+class Url implements UrlInterface
 {
     /**
      * @ODM\String
@@ -27,8 +28,8 @@ class Url
 
     public function __construct($relative = null, $absolute = null)
     {
-        $this->relative = $relative;
-        $this->absolute = $absolute;
+        $this->setRelative($relative);
+        $this->setAbsolute($absolute);
     }
 
     /**

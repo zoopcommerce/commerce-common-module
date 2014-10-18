@@ -2,6 +2,7 @@
 
 namespace Zoop\Common\File\DataModel;
 
+use Zoop\Common\File\DataModel\FileInterface;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
@@ -14,7 +15,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 /**
  * @ODM\Document
  */
-class File
+class File implements FileInterface
 {
     use CreatedOnTrait;
     use CreatedByTrait;
@@ -28,7 +29,6 @@ class File
     protected $id;
 
     /**
-     *
      * @ODM\String
      */
     protected $name;
@@ -44,13 +44,11 @@ class File
     protected $mime;
 
     /**
-     *
      * @ODM\Int
      */
     protected $size;
 
     /**
-     *
      * @return string
      */
     public function getName()
@@ -59,7 +57,6 @@ class File
     }
 
     /**
-     *
      * @param string $name
      */
     public function setName($name)
@@ -68,7 +65,6 @@ class File
     }
 
     /**
-     *
      * @return string
      */
     public function getExtension()
@@ -77,7 +73,6 @@ class File
     }
 
     /**
-     *
      * @param string $extension
      */
     public function setExtension($extension)
@@ -86,7 +81,6 @@ class File
     }
 
     /**
-     *
      * @return string
      */
     public function getMime()
@@ -95,7 +89,6 @@ class File
     }
 
     /**
-     *
      * @param string $mime
      */
     public function setMime($mime)
@@ -104,7 +97,6 @@ class File
     }
 
     /**
-     *
      * @return integer
      */
     public function getSize()
@@ -113,7 +105,6 @@ class File
     }
 
     /**
-     *
      * @param integer $size
      */
     public function setSize($size)

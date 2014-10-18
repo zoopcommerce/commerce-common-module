@@ -2,6 +2,7 @@
 
 namespace Zoop\Common\DataModel;
 
+use Zoop\Common\DataModel\CurrencyInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -12,7 +13,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class Currency
+class Currency implements CurrencyInterface
 {
     /**
      *

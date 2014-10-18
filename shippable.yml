@@ -23,7 +23,7 @@ before_script:
   - echo "xdebug.max_nesting_level = 1000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
   - composer config -g github-oauth.github.com $GITHUB_TOKEN
-  - composer install --no-interaction --prefer-source
+  - composer install --no-interaction --prefer-dist
 
 script:
   - vendor/bin/phpunit --configuration phpunit.xml --log-junit shippable/testresults/junit.xml

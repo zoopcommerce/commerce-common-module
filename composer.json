@@ -29,11 +29,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/zoopcommerce/mongodb-odm"
+            "url":  "git@github.com:zoopcommerce/commerce-public-apis-module.git"
         },
         {
             "type": "vcs",
-            "url":  "git@github.com:zoopcommerce/commerce-public-apis-module.git"
+            "url": "https://github.com/zoopcommerce/mongodb-odm"
         }
     ],
     "require": {

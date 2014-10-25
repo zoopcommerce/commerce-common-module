@@ -141,7 +141,8 @@ return [
                     ],
                     'models' => [
                         'Zoop\Common\DataModel' => __DIR__ . '/../src/Zoop/Common/DataModel',
-                        'Zoop\Common\File\DataModel' => __DIR__ . '/../src/Zoop/Common/File/DataModel'
+                        'Zoop\Common\File\DataModel' => __DIR__ . '/../src/Zoop/Common/File/DataModel',
+                        'Zoop' => __DIR__ . '/../vendor/zoopcommerce/commerce-public-data-models-module/src/Zoop'
                     ],
                     'service_manager_config' => [
                         'factories' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Utils;
+namespace Zoop\Common\Utils;
 
 class Currency
 {

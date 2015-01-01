@@ -37,7 +37,7 @@ class S3Test extends AbstractTest
     {
         $filename1 = uniqid() . '.txt';
         $filename2 = uniqid() . '.txt';
-        
+
         //put the object
         $data = file_get_contents(__DIR__ . '/../Assets/test.txt');
         $r = $this->getS3()->put($filename1, $data);
@@ -50,7 +50,7 @@ class S3Test extends AbstractTest
         $r = $this->getS3()->get($filename2);
         $this->assertInstanceOf('Guzzle\Service\Resource\Model', $r);
         $this->assertEquals($data, $r->get('Body'));
-        
+
         return [
             $filename1,
             $filename2
